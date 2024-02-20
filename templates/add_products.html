@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Add</title>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+        <div class="alert alert-danger">
+        {{ error }}
+        </div>
+        {% endif %}
+        <div class="text-center text-success">
+            <h1>Thêm sản phẩm</h1>
+        </div>
+        <form method="POST" action="/products/add">
+            <div class="form-group">
+                <lable>Tên sản phẩm</lable>
+                <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm...">
+                <lable>Mô tả</lable>
+                <textarea class="form-control" name="description" placeholder="Mô tả sản phẩm..."></textarea>
+                <lable>Danh mục</lable>
+                <select class="form-control" name="category_id">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <lable>Số lượng</lable>
+                <input type="number" class="form-control" name="amount" placeholder="Số lượng...">
+                <lable>Giá</lable>
+                <input type="number" class="form-control" name="price" placeholder="Giá...">
+                <input type="submit" class="btn btn-danger" value="Thêm sản phẩm">
+            </div>
+        </form> 
+    </div>
+</body>
+</html>
