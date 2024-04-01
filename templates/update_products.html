@@ -16,23 +16,28 @@
             <div class="text-center text-success">
                 <h1>Cập nhật sản phẩm</h1>
             </div>
-            <form method="POST" action="/products/update">
+            <form method="POST" action="/products/update?product_id={{ product[0] }}">
                 <div class="form-group">
                     <lable>Tên sản phẩm</lable>
-                    <input type="text" class="form-control" name="name" value="{{ product.name }}" placeholder="Tên sản phẩm...">
+                    <input type="text" class="form-control" name="name" value="{{ product[2] }}" placeholder="Tên sản phẩm...">
                     <lable>Mô tả</lable>
-                    <textarea class="form-control" name="description" placeholder="Mô tả sản phẩm...">{{ product.description }}</textarea>
+                    <textarea class="form-control" name="description" placeholder="Mô tả sản phẩm...">{{ product[3] }}</textarea>
                     <lable>Danh mục</lable>
                     <select class="form-control" name="category_id">
                         {% for category in categories %}
-                        <option value="{{ category.id }}" {% if category.id == product.category_id %} selected {% endif %}>{{ category.name }}</option>
+                        <option value="{{ category[0] }}" {% if category[0] == product[1] %} selected {% endif %}>{{ category[1] }}</option>
                         {% endfor %}
                     </select>
                     <lable>Số lượng</lable>
-                    <input type="number" class="form-control" name="amount" value="{{ product.amount }}" placeholder="Số lượng...">
+                    <input type="number" class="form-control" name="amount" value="{{ product[5] }}" placeholder="Số lượng...">
                     <lable>Giá</lable>
-                    <input type="number" class="form-control" name="price" value="{{ product.price }}" placeholder="Giá...">
-                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <input type="number" class="form-control" name="price" value="{{ product[4] }}" placeholder="Giá...">
+                    <lable>Chi nhánh</lable>
+                    <select class="form-control" name="branch_id">
+                        {% for branch in branches %}
+                        <option value="{{ branch[0] }}" {% if branch[0] == product[6] %} selected {% endif %}>{{ branch[1] }}</option>
+                        {% endfor %}
+                    </select>
                     <input type="submit" class="btn btn-danger" value="Cập nhật">
                 </div>
             </form>

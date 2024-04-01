@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Employee</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            {% if error %}
+            <div class="alert alert-danger">
+            {{ error }}
+            </div>
+            {% endif %}
+            <div class="text-center text-success">
+                <h1>Cập nhật nhân viên</h1>
+            </div>
+            <form method="POST" action="/employee/update?emp_id={{ emp[1] }}">
+                <div class="form-group">
+                    <lable>Mã nhân viên</lable>
+                    <input type="text" class="form-control" name="emp_id" value="{{ emp[1] }}" readonly>
+                    <lable>Tên</lable>
+                    <input type="text" class="form-control" name="name" value="{{ emp[2] }}">
+                    <lable>Giới tính</lable>
+                    <input type="text" class="form-control" name="sex" value="{{ emp[3] }}" readonly>
+                    <lable>Ngày sinh</lable>
+                    <input type="date" class="form-control" name="birth" value="{{ emp[4] }}">
+                    <lable>Chức vụ</lable>
+                    <input type="text" class="form-control" name="role" value="{{ emp[5] }}">
+                    <lable>Vị trí</lable>
+                    <input type="text" class="form-control" name="pos" value="{{ emp[6] }}">
+                    <lable>Email</lable>
+                    <input type="email" class="form-control" name="email" value="{{ emp[7] }}">
+                    <lable>Số điện thoại</lable>
+                    <input type="text" class="form-control" name="phone" value="{{ emp[8] }}">
+                    <input type="submit" class="btn btn-danger" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

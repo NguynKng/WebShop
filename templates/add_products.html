@@ -25,13 +25,19 @@
                     <lable>Danh mục</lable>
                     <select class="form-control" name="category_id">
                         {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+                        <option value="{{ category[0] }}">{{ category[1] }}</option>
                         {% endfor %}
                     </select>
                     <lable>Số lượng</lable>
                     <input type="number" class="form-control" name="amount" placeholder="Số lượng...">
                     <lable>Giá</lable>
                     <input type="number" class="form-control" name="price" placeholder="Giá...">
+                    <lable>Chi nhánh</lable>
+                    <select class="form-control" name="branch_id">
+                        {% for branch in branches %}
+                        <option value="{{ branch[0] }}">{{ branch[1] }}</option>
+                        {% endfor %}
+                    </select>
                     <input type="submit" class="btn btn-danger" value="Thêm sản phẩm">
                 </div>
             </form>

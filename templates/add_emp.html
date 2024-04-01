@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Employee</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            {% if error %}
+            <div class="alert alert-danger">
+            {{ error }}
+            </div>
+            {% endif %}
+            <div class="text-center text-success">
+                <h1>Thêm nhân viên</h1>
+            </div>
+            <form method="POST" action="/employee/add">
+                <div class="form-group">
+                    <lable>Mã nhân viên</lable>
+                    <input type="text" class="form-control" name="emp_id" placeholder="Mã nhân viên...">
+                    <lable>Tên</lable>
+                    <input type="text" class="form-control" name="name" placeholder="Tên nhân viên...">
+                    <lable>Giới tính</lable>
+                    <select class="form-control" name="sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other...</option>
+                    </select>
+                    <lable>Ngày sinh</lable>
+                    <input type="date" class="form-control" name="birth" placeholder="mm/dd/yyyy">
+                    <lable>Chức vụ</lable>
+                    <input type="text" class="form-control" name="role" placeholder="Chức vụ...">
+                    <lable>Vị trí</lable>
+                    <input type="text" class="form-control" name="pos" placeholder="Vị trí...">
+                    <lable>Email</lable>
+                    <input type="email" class="form-control" name="email" placeholder="Email...">
+                    <lable>Số điện thoại</lable>
+                    <input type="text" class="form-control" name="phone" placeholder="Số điện thoại...">
+                    <input type="submit" class="btn btn-danger" value="Thêm">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

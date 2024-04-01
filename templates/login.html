@@ -25,11 +25,14 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="/signup">Sign Up</a>
                             </li>
+                            <li class="nav-item active">
+                                <a class='nav-link' href="/products">Shop</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <form action="/login" method="POST">
+            <form action="/login/?next={{ request.args['next'] }}" method="POST">
                 <div class="text-center">
                     <h1>Login</h1>
                 </div>
