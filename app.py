@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, json, redirect, url_for, jsonify, session
-from mysql_config import mysql
+from MySQL.mysql_config import *
 import dao
 import os
 import random
+import flask
 from functools import wraps
 
 app = Flask(__name__)
-app.config.from_object('mysql_config.Config')
+app.config.from_object(Config)
 app.secret_key = os.urandom(16)
 mysql.init_app(app)
 
@@ -27,29 +28,29 @@ def home():
 
 @app.route("/signup", methods=["POST", "GET"])
 def signup():
-    error = ""
+    msg = ""
     if request.method == "POST":
         _username = request.form['username']
         _email = request.form['email']
         _password = request.form['password']
         _password2 = request.form['password2']
         if dao.check_username(_username):
-            error = "Tên đăng nhập đã tồn tại!"
+            msg = "Tên đăng nhập đã tồn tại!"
         elif not dao.validate_password(_password):
-            error = "Vui lòng nhập mật khẩu dài 6-32 ký tự, có ký tự chữ số, chữ hoa, chữ thường và kí tự đặc biệt."
+            msg = "Vui lòng nhập mật khẩu dài 6-32 ký tự, có ký tự chữ số, chữ hoa, chữ thường và kí tự đặc biệt."
         elif dao.check_email(_email):
-            error = "Email đã tồn tại! Vui lòng sử dụng email khác!"
+            msg = "Email đã tồn tại! Vui lòng sử dụng email khác!"
         else:
             if dao.signup(_username, _password, _password2, _email):
                 return redirect(url_for("login"))
             else:
-                error = "Mật khẩu không khớp! Vui lòng nhập lại!"
-    return render_template("signup.html", error=error)
+                msg = "Mật khẩu không khớp! Vui lòng nhập lại!"
+    return render_template("signup.html", msg=msg)
 
 
 @app.route("/login/", methods=["POST", "GET"])
 def login():
-    error = ""
+    msg = ""
     if request.method == "POST":
         _username = request.form['username']
         _password = request.form['password']
@@ -58,8 +59,8 @@ def login():
                 return redirect(request.args["next"])
             return redirect(url_for('home'))
         else:
-            error = "Sài tài khoản hoặc mật khẩu! Vui lòng thử lại."
-    return render_template('login.html', error=error)
+            msg = "Sài tài khoản hoặc mật khẩu! Vui lòng thử lại."
+    return render_template('login.html', msg=msg)
 
 
 @app.route("/logout")
@@ -214,21 +215,10 @@ def delete_emp(emp_id):
         "message": "Delete not successfully"
     })
 
-
 @app.route("/api/carts", methods=["POST"])
 def add_to_cart(category_id):
     products = dao.read_product_by_category_id(category_id)
     return render_template("products.html", products=products)
-'''
-@app.route("/api/products",methods=["GET","POST"])
-def api_product_list():
-    if request.method == "POST":
-        error = ""
-        product_id = request.args.get('product_id')
-        product = None
-        if product_id:
-            product = dao.read_product_id(product_id=int(product_id))
-'''
 
 
 if __name__ == "__main":

@@ -16,11 +16,12 @@
                         }).then(function(data){
                             console.info(data);
                             var empID = data.data.emp_id;
-                            var p = document.getElementById(empID);
+                            var p = document.getElementById('emp' + empID);
                             p.style.display = 'none';
                         }).catch(function(error){
                             console.error(error);
-                        });
+                        }
+                    );
                 }
             }
         </script>
@@ -33,8 +34,8 @@
                     <h1>Danh sách nhân viên</h1>
                 </div>
                 <div class="form-group">
-                    <lable>Mã nhân viên</lable>
-                    <input type="text" name="emp_id" class="form-control" placeholder="Mã nhân viên...">
+                    <label for="inputEmpID">Mã nhân viên</label>
+                    <input type="text" name="emp_id" id="inputEmpID" class="form-control" placeholder="Mã nhân viên...">
                     <input type="submit" class="btn btn-danger" value="Tìm">
                 </div>
             </form>
@@ -50,7 +51,7 @@
                     <th>Liên lạc</th>
                 </tr>
                 {% for e in employees %}
-                <tr class="{% if request.args['emp_id']==e[1]|string %}bg-warning{% endif %}" id="{{e[1]}}">
+                <tr class="{% if request.args['emp_id']==e[1]|string %}bg-warning{% endif %}" id="emp{{e[0]}}">
                     <td>{{ e[1] }}</td>
                     <td>{{ e[2] }}</td>
                     <td>{{ e[3] }}</td>
@@ -61,7 +62,7 @@
                     <td>{{ e[8] }}</td>
                     <td>
                         <a href="{{ url_for('update_emp', emp_id = e[1]) }}">Cập nhật</a> |
-                        <a href="javascript:;" onclick="delete_emp({{ e[1] }})">Xóa</a>
+                        <a href="javascript:;" onclick="delete_emp({{ e[0] }})">Xóa</a>
                     </td>
                 </tr>
                 {% endfor %}

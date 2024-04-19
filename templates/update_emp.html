@@ -18,22 +18,22 @@
             </div>
             <form method="POST" action="/employee/update?emp_id={{ emp[1] }}">
                 <div class="form-group">
-                    <lable>Mã nhân viên</lable>
-                    <input type="text" class="form-control" name="emp_id" value="{{ emp[1] }}" readonly>
-                    <lable>Tên</lable>
-                    <input type="text" class="form-control" name="name" value="{{ emp[2] }}">
-                    <lable>Giới tính</lable>
-                    <input type="text" class="form-control" name="sex" value="{{ emp[3] }}" readonly>
-                    <lable>Ngày sinh</lable>
-                    <input type="date" class="form-control" name="birth" value="{{ emp[4] }}">
-                    <lable>Chức vụ</lable>
-                    <input type="text" class="form-control" name="role" value="{{ emp[5] }}">
-                    <lable>Vị trí</lable>
-                    <input type="text" class="form-control" name="pos" value="{{ emp[6] }}">
-                    <lable>Email</lable>
-                    <input type="email" class="form-control" name="email" value="{{ emp[7] }}">
-                    <lable>Số điện thoại</lable>
-                    <input type="text" class="form-control" name="phone" value="{{ emp[8] }}">
+                    <label for="inputEmpID">Mã nhân viên</label>
+                    <input type="text" class="form-control" id="inputEmpID" name="emp_id" value="{{ emp[1] }}" readonly>
+                    <label for="inputName">Tên</label>
+                    <input type="text" class="form-control" id="inputName" name="name" value="{{ emp[2] }}">
+                    <label for="inputSex">Giới tính</label>
+                    <input type="text" class="form-control" id="inputSex" name="sex" value="{{ emp[3] }}" readonly>
+                    <label for="inputBirth">Ngày sinh</label>
+                    <input type="date" class="form-control" id="inputBirth" name="birth" value="{{ emp[4] }}">
+                    <label for="inputRole">Chức vụ</label>
+                    <input type="text" class="form-control" id="inputRole" name="role" value="{{ emp[5] }}">
+                    <label for="inputPos">Vị trí</label>
+                    <input type="text" class="form-control" id="inputPos" name="pos" value="{{ emp[6] }}">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" value="{{ emp[7] }}">
+                    <label for="inputPhone">Số điện thoại</label>
+                    <input type="text" class="form-control" id="inputPhone" name="phone" value="{{ emp[8] }}">
                     <input type="submit" class="btn btn-danger" value="Thêm">
                 </div>
             </form>

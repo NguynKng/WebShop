@@ -1,4 +1,4 @@
-from mysql_config import mysql
+from MySQL.mysql_config import mysql
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
 import re
@@ -115,7 +115,7 @@ def add_employee(emp_id, name, sex, birth, role, pos, email, phone):
 
 def delete_emp(emp_id):
     cursor = mysql.connection.cursor()
-    cursor.execute("DELETE FROM employee WHERE (emp_id = %s)", (emp_id,))
+    cursor.execute("DELETE FROM employee WHERE (id = %s)", (emp_id,))
     mysql.connection.commit()
     cursor.close()
     return True
@@ -145,7 +145,9 @@ def signup(_username, _password, _password2, _email):
                        (_username, hash, _email))
         mysql.connection.commit()
         cursor.close()
-    return True
+        return True
+    else:
+        return False
 
 
 def validate_password(password):

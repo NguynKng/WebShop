@@ -18,26 +18,26 @@
             </div>
             <form method="POST" action="/employee/add">
                 <div class="form-group">
-                    <lable>Mã nhân viên</lable>
-                    <input type="text" class="form-control" name="emp_id" placeholder="Mã nhân viên...">
-                    <lable>Tên</lable>
-                    <input type="text" class="form-control" name="name" placeholder="Tên nhân viên...">
-                    <lable>Giới tính</lable>
-                    <select class="form-control" name="sex">
+                    <label for="inputEmpID">Mã nhân viên</label>
+                    <input type="text" class="form-control" id="inputEmpID" name="emp_id" placeholder="Mã nhân viên...">
+                    <label for="inputName">Tên</label>
+                    <input type="text" class="form-control" id="inputName" name="name" placeholder="Tên nhân viên...">
+                    <label for="inputSex">Giới tính</label>
+                    <select class="form-control" id="inputSex" name="sex">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other...</option>
                     </select>
-                    <lable>Ngày sinh</lable>
-                    <input type="date" class="form-control" name="birth" placeholder="mm/dd/yyyy">
-                    <lable>Chức vụ</lable>
-                    <input type="text" class="form-control" name="role" placeholder="Chức vụ...">
-                    <lable>Vị trí</lable>
-                    <input type="text" class="form-control" name="pos" placeholder="Vị trí...">
-                    <lable>Email</lable>
-                    <input type="email" class="form-control" name="email" placeholder="Email...">
-                    <lable>Số điện thoại</lable>
-                    <input type="text" class="form-control" name="phone" placeholder="Số điện thoại...">
+                    <label for="inputBirth">Ngày sinh</label>
+                    <input type="date" class="form-control" id="inputBirth" name="birth" placeholder="mm/dd/yyyy">
+                    <label for="inputRole">Chức vụ</label>
+                    <input type="text" class="form-control" id="inputRole" name="role" placeholder="Chức vụ...">
+                    <label for="inputPos">Vị trí</label>
+                    <input type="text" class="form-control" id="inputPos" name="pos" placeholder="Vị trí...">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email...">
+                    <label for="inputPhone">Số điện thoại</label>
+                    <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Số điện thoại...">
                     <input type="submit" class="btn btn-danger" value="Thêm">
                 </div>
             </form>

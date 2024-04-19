@@ -33,20 +33,20 @@
                     <h1>Quản lí sản phẩm</h1>
                 </div>
                 <div class="form-group">
-                    <lable>Tìm theo tên</lable>
-                    <input type="text" name="keyword" class="form-control" placeholder="Nhập sản phẩm...">
-                    <lable>Tìm theo giá</lable>
-                    <input type="number" name="from_price" class="form-control" placeholder="Giá bắt đầu...">
-                    <input type="number" name="to_price" class="form-control" placeholder="Giá kết thúc...">
-                    <lable>Loại</lable>
-                    <select class="form-control" name="category_id">
+                    <label for="inputName">Tìm theo tên</label>
+                    <input type="text" name="keyword" id="inputName" class="form-control" placeholder="Nhập sản phẩm...">
+                    <label for="inputPrice">Tìm theo giá</label>
+                    <input type="number" name="from_price" id="inputPrice" class="form-control" placeholder="Giá bắt đầu...">
+                    <input type="number" name="to_price" id="inputPrice" class="form-control" placeholder="Giá kết thúc...">
+                    <label for="inputCate">Loại</label>
+                    <select class="form-control" id="inputCate" name="category_id">
                         <option value="">----------</option>
                         {% for category in categories %}
                         <option value="{{ category[0] }}">{{ category[1] }}</option>
                         {% endfor %}
                     </select>
-                    <lable>Chi nhánh</lable>
-                    <select class="form-control" name="branch_id">
+                    <label for="inputBranch">Chi nhánh</label>
+                    <select class="form-control" id="inputBranch" name="branch_id">
                         <option value="">----------</option>
                         {% for branch in branches %}
                         <option value="{{ branch[0] }}">{{ branch[1] }}</option>
